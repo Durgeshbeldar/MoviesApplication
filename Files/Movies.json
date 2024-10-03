@@ -1,0 +1,38 @@
+[
+  {
+    "MovieId": "MOV571702",
+    "MovieName": "Hera pheri",
+    "Genre": "Comedy",
+    "Rating": [
+      5.0
+    ],
+    "Year": 2000
+  },
+  {
+    "MovieId": "MOV251802",
+    "MovieName": "Passenger",
+    "Genre": "Sci-Fi",
+    "Rating": [
+      4.5
+    ],
+    "Year": 2005
+  },
+  {
+    "MovieId": "MOV021902",
+    "MovieName": "Malamal Weekly",
+    "Genre": "Comedy",
+    "Rating": [
+      4.2
+    ],
+    "Year": 2003
+  },
+  {
+    "MovieId": "MOV132002",
+    "MovieName": "Intersteller",
+    "Genre": "Sci-Fi",
+    "Rating": [
+      5.0
+    ],
+    "Year": 2004
+  }
+]
