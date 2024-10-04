@@ -54,58 +54,12 @@ namespace MoviesApplication.Services
         }
 
 
-        // Display Movies ..
-        public static void DisplayMovies(List<Movie> movies)
-        {
-            if (movies.Count == 0)
-            {
-                Console.WriteLine("No Movies Found");
-            }
-            else
-            {
-                int index = 1;
-                Console.WriteLine("\n****** All Movie List ******\n");
-                foreach (Movie movie in movies)
-                    Console.WriteLine($"{index++})\n{movie.ToString()}");
-            }
-        }
+      
 
 
-        // To select the Movie
-        public static Movie SelectMovie(List<Movie> movies)
-        {
-            if (movies.Count == 0)
-                return null;
-            Console.WriteLine("Select The Movie...");
-            int i;
-            for (i = 0; i < movies.Count; i++)
-            {
-                Console.WriteLine($"{i + 1}. {movies[i].MovieName}");
-            }
-            int selectMovie = int.Parse(Console.ReadLine());
-            return movies[selectMovie - 1];
-        }
 
 
-        // To add Movie
-        public static string AddMovie(List<Movie> movies)
-        {
-            if (movies.Count > 5)
-                return "You reached the maximum limit, You cant add new movies";
-
-            Console.WriteLine("Enter The Movie Name :");
-            string movieName = Console.ReadLine();
-            Console.WriteLine("Enter Genre : ");
-            string genre = Console.ReadLine();
-            Console.WriteLine("Enter the Rating : ");
-            double rating = double.Parse(Console.ReadLine());
-            Console.WriteLine("Enter Movie Released Year :");
-            int year = int.Parse(Console.ReadLine());
-            Movie newMovie = new Movie(movieName, genre, rating, year);
-            movies.Add(newMovie);
-            Serializer.SaveMovies(movies);
-            return "\nMovie Added Successfully...\n";
-        }
+       
 
         // To Delet All the Movies in File
         public static string ClearAllMovies(List<Movie> movies)

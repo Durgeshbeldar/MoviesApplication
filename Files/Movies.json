@@ -4,7 +4,8 @@
     "MovieName": "Hera pheri",
     "Genre": "Comedy",
     "Rating": [
-      5.0
+      5.0,
+      3.5
     ],
     "Year": 2000
   },
