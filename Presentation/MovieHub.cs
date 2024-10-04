@@ -12,12 +12,11 @@ namespace MoviesApplication.Presentation
 {
     internal class MovieHub
     {
-        
+        public static MovieManager movieManager = new MovieManager();
         public static void MoviesApp()
         {
             Console.WriteLine("\n***************** Welcome to Movies Application *****************\n");
-            bool operate = true;
-            while (operate)
+            while (true)
             {
                 // Menu Implementation...
                 Console.WriteLine(
@@ -29,41 +28,44 @@ namespace MoviesApplication.Presentation
                         + $" 5. Exit/Cancel\n"
                 );
 
-                int choose = int.Parse(Console.ReadLine());
-                operate = DoTask(choose);
+                int option = int.Parse(Console.ReadLine());
+                ExecuteMenuOptions(option);
             }
         }
 
-        public static bool DoTask(int choose)
+        public static void ExecuteMenuOptions(int option)
         {
-            switch (choose)
+            switch (option)
             {
                 case 1:
-                    AddMovie();
-                    return true;
+                    Console.WriteLine(AddMovie());
+                    break;
                 case 2:
                     DisplayMovies();
-                    return true;
+                    break;
                 case 3:
                     OperateMovies();
-                    return true;
+                    break;
                 case 4:
                     ClearAllMovies();
-                    return true;
+                    break;
                 case 5:
                     SaveMovies();
                     Console.WriteLine("Exited Successfully....!");
-                    return false;
+                    return;
                 default:
                     Console.WriteLine("Invalid Input, Please Try Again\n");
-                    return true;
+                    break;
             }
         }
 
 
         // To add the Movie
-        public static void AddMovie()
-        { 
+        public static string AddMovie()
+        {
+            if (movieManager.IsFull())
+                return "\nSorry, Dont Have The Capacity To Add New Movie...!";
+
             Console.WriteLine("Enter The Movie Name :");
             string movieName = Console.ReadLine();
 
@@ -76,34 +78,30 @@ namespace MoviesApplication.Presentation
             Console.WriteLine("Enter Movie Released Year :");
             int year = int.Parse(Console.ReadLine());
 
-            MovieManager movieManager = new MovieManager();
-            movieManager.AddMovie(movieName, genre, rating,year);    
-            Console.WriteLine("\nMovie Added Successfully...\n");
+            movieManager.AddMovie(movieName, genre, rating,year);
+               return "\nMovie Added Successfully to MovieHub Store...!";
         }
 
+
+        // Used For Saving the Data
         public static void SaveMovies()
         {
-            MovieManager movieManager = new MovieManager();
             movieManager.SaveData();
             Console.WriteLine("All Data Saved Successfully...!");
         }
 
 
-
         // To Clear or delete All Movies 
-
         public static void ClearAllMovies()
         {
-            MovieManager movieManager = new MovieManager();
             movieManager.DeleteMovies();
             Console.WriteLine("All Movies Deleted Successfully");
         }
 
-        // To Display the Movies ...
 
+        // To Display the Movies ...
         public static void DisplayMovies()
         {
-            MovieManager movieManager = new MovieManager();
             List<Movie>movies = movieManager.GetMovies();
 
             if (movies.Count == 0)
@@ -122,11 +120,9 @@ namespace MoviesApplication.Presentation
 
         public static void OperateMovies()
         {
-            MovieManager movieManager = new MovieManager();
             List<Movie> movies = movieManager.GetMovies();
             Movie selectedMovie = SelectMovie(movies);
-            bool operate = true;
-            while (operate)
+            while (true)
             {
                 Console.WriteLine(
                     $"\nChoose The Options From The Following List : \n\n"
@@ -135,45 +131,45 @@ namespace MoviesApplication.Presentation
                         + $" 3. Delete The Movie\n"
                         + $" 4. Exit/Cancel\n"
                 );
-                int choose = int.Parse(Console.ReadLine());
-                operate = DoTask1(selectedMovie, choose);
+                int option = int.Parse(Console.ReadLine());
+                ExecuteMovieOptions(selectedMovie, option);
             }
         }
 
-        public static bool DoTask1(Movie selectedMovie, int choose)
+        // You Can Perform Edit, Read & Update Operations From this user-interface 
+        public static void ExecuteMovieOptions(Movie selectedMovie, int option)
         {
-            switch (choose)
+            switch (option)
             {
                 case 1:
                     Console.WriteLine(selectedMovie.ToString());
-                    return true;
+                    break;
                 case 2:
                     RateTheMovie(selectedMovie.MovieId);
-                    return true;
+                    break;
                 case 3:
-                    DeleteOneMovie(selectedMovie.MovieId);
-                    return true;
+                    DeleteTheMovie(selectedMovie.MovieId);
+                    break;
                 case 4:
                     Console.WriteLine("Exited Successfully...!");
-                    return false;
+                    return;
                 default:
                     Console.WriteLine("Invalid Input, Please Select the Correct Option\n");
-                    return true;
+                    break;
             }
         }
 
-        // For deletion of one movie
-        public static void DeleteOneMovie(string movieId)
+
+        // For Deletion of Movie
+        public static void DeleteTheMovie(string movieId)
         {
-            MovieManager movieManager = new MovieManager();
             movieManager.DeleteMovie(movieId);
             Console.WriteLine("Movie Deleted Successfully...!\n");
         }
 
-        // To rate the movie the following function will be use...
+        // To Rate the movie the following function will be use...
         public static void RateTheMovie(string movieId)
         {
-            MovieManager movieManager = new MovieManager();
             double movieRating = movieManager.RateMovie(movieId, GetValidRating());
             Console.WriteLine($"Rating Submitted Successfully...!, New Rating is : {movieRating}\n");
         }
@@ -195,14 +191,29 @@ namespace MoviesApplication.Presentation
         {
             if (movies.Count == 0)
                 return null;
-            Console.WriteLine("Select The Movie From The List :");
-            int i;
-            for (i = 0; i < movies.Count; i++)
+            int index;
+            for (index = 0; index < movies.Count; index++)
             {
-                Console.WriteLine($"{i + 1}. {movies[i].MovieName}");
+                Console.WriteLine($"{index + 1}. {movies[index].MovieName}");
             }
-            int selectMovie = int.Parse(Console.ReadLine());
+            int selectMovie = GetUserSelection(movies.Count); // Here We can handle it using exception handling as well
             return movies[selectMovie - 1];
         }
+        
+
+        // Method to get user selection
+        public  static int GetUserSelection(int max)
+        { 
+            Console.WriteLine("Select The Movie From The Above List :");
+            while (true)
+            {
+                int select = int.Parse(Console.ReadLine());
+                if( select >= 1 && select <= max)
+                    return select;
+                Console.WriteLine($"Please Enter The Number Between 1 to {max}**");
+            }
+        }
+
+
     }
 }

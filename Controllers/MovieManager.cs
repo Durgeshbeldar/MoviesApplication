@@ -9,8 +9,8 @@ namespace MoviesApplication.Controllers
 {
     internal class MovieManager
     {
-        List<Movie> movies; 
-
+        List<Movie> movies;
+        const int CAPACITY = 5; // Magic Number concept :)
         // Construtor For Movie Manager
         public MovieManager() {
             movies = Serializer.LoadMovies();
@@ -50,6 +50,13 @@ namespace MoviesApplication.Controllers
         }
 
 
+        // Checking The Storage Capacity... For Now We Just Storing 5 Movies 
+        public bool IsFull()
+        {
+            if(movies.Count >= CAPACITY) // Hanling the Logic of having 5 Movies in the Movie Hub
+                return false;
+                return true;
+        }
 
         // Delete Movies and One Movie Section
         public void DeleteMovies()
