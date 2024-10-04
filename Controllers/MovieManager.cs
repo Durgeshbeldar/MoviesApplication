@@ -1,4 +1,5 @@
 ﻿using MoviesApplication.Models;
+using MoviesApplication.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,8 +55,8 @@ namespace MoviesApplication.Controllers
         public bool IsFull()
         {
             if(movies.Count >= CAPACITY) // Hanling the Logic of having 5 Movies in the Movie Hub
-                return false;
                 return true;
+                return false;
         }
 
         // Delete Movies and One Movie Section

@@ -10,3 +10,15 @@ S:\Office Work\Monocept Training\Assignments\MoviesApplication\MoviesApplication
 S:\Office Work\Monocept Training\Assignments\MoviesApplication\MoviesApplication\obj\Debug\MoviesAp.B2D00A89.Up2Date
 S:\Office Work\Monocept Training\Assignments\MoviesApplication\MoviesApplication\obj\Debug\MoviesApplication.exe
 S:\Office Work\Monocept Training\Assignments\MoviesApplication\MoviesApplication\obj\Debug\MoviesApplication.pdb
+S:\Office Work\Monocept Training\Assignments\MoviesHub\MoviesApplication\bin\Debug\MoviesApplication.exe.config
+S:\Office Work\Monocept Training\Assignments\MoviesHub\MoviesApplication\bin\Debug\MoviesApplication.exe
+S:\Office Work\Monocept Training\Assignments\MoviesHub\MoviesApplication\bin\Debug\MoviesApplication.pdb
+S:\Office Work\Monocept Training\Assignments\MoviesHub\MoviesApplication\bin\Debug\Newtonsoft.Json.dll
+S:\Office Work\Monocept Training\Assignments\MoviesHub\MoviesApplication\bin\Debug\System.Configuration.ConfigurationManager.dll
+S:\Office Work\Monocept Training\Assignments\MoviesHub\MoviesApplication\bin\Debug\Newtonsoft.Json.xml
+S:\Office Work\Monocept Training\Assignments\MoviesHub\MoviesApplication\bin\Debug\System.Configuration.ConfigurationManager.xml
+S:\Office Work\Monocept Training\Assignments\MoviesHub\MoviesApplication\obj\Debug\MoviesApplication.csproj.AssemblyReference.cache
+S:\Office Work\Monocept Training\Assignments\MoviesHub\MoviesApplication\obj\Debug\MoviesApplication.csproj.CoreCompileInputs.cache
+S:\Office Work\Monocept Training\Assignments\MoviesHub\MoviesApplication\obj\Debug\MoviesAp.B2D00A89.Up2Date
+S:\Office Work\Monocept Training\Assignments\MoviesHub\MoviesApplication\obj\Debug\MoviesApplication.exe
+S:\Office Work\Monocept Training\Assignments\MoviesHub\MoviesApplication\obj\Debug\MoviesApplication.pdb

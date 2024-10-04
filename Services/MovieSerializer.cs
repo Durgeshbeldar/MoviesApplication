@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoviesApplication.Controllers
+namespace MoviesApplication.Services
 {
     internal class Serializer
     {

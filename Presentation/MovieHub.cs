@@ -52,6 +52,7 @@ namespace MoviesApplication.Presentation
                 case 5:
                     SaveMovies();
                     Console.WriteLine("Exited Successfully....!");
+                    Environment.Exit(0);
                     return;
                 default:
                     Console.WriteLine("Invalid Input, Please Try Again\n");
@@ -122,7 +123,8 @@ namespace MoviesApplication.Presentation
         {
             List<Movie> movies = movieManager.GetMovies();
             Movie selectedMovie = SelectMovie(movies);
-            while (true)
+            bool operateMovies = true;
+            while (operateMovies)
             {
                 Console.WriteLine(
                     $"\nChoose The Options From The Following List : \n\n"
@@ -132,12 +134,13 @@ namespace MoviesApplication.Presentation
                         + $" 4. Exit/Cancel\n"
                 );
                 int option = int.Parse(Console.ReadLine());
-                ExecuteMovieOptions(selectedMovie, option);
+                ExecuteMovieOptions(selectedMovie, option, ref operateMovies);
             }
         }
 
+
         // You Can Perform Edit, Read & Update Operations From this user-interface 
-        public static void ExecuteMovieOptions(Movie selectedMovie, int option)
+        public static void ExecuteMovieOptions(Movie selectedMovie, int option, ref bool operate)
         {
             switch (option)
             {
@@ -149,9 +152,11 @@ namespace MoviesApplication.Presentation
                     break;
                 case 3:
                     DeleteTheMovie(selectedMovie.MovieId);
+                    operate = false; 
                     break;
                 case 4:
                     Console.WriteLine("Exited Successfully...!");
+                    operate = false;
                     return;
                 default:
                     Console.WriteLine("Invalid Input, Please Select the Correct Option\n");
@@ -171,7 +176,7 @@ namespace MoviesApplication.Presentation
         public static void RateTheMovie(string movieId)
         {
             double movieRating = movieManager.RateMovie(movieId, GetValidRating());
-            Console.WriteLine($"Rating Submitted Successfully...!, New Rating is : {movieRating}\n");
+            Console.WriteLine($"Rating Submitted Successfully!, New Rating is : {movieRating:F2}\n");
         }
 
 
@@ -204,7 +209,7 @@ namespace MoviesApplication.Presentation
         // Method to get user selection
         public  static int GetUserSelection(int max)
         { 
-            Console.WriteLine("Select The Movie From The Above List :");
+            Console.WriteLine("\nSelect The Movie From The Above List :");
             while (true)
             {
                 int select = int.Parse(Console.ReadLine());
