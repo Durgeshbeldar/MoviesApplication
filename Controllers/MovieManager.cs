@@ -12,7 +12,9 @@ namespace MoviesApplication.Controllers
     {
         List<Movie> movies;
         const int CAPACITY = 5; // Magic Number concept :)
-        // Construtor For Movie Manager
+        
+        // Constructor For Movie Manager
+        
         public MovieManager() {
             movies = Serializer.LoadMovies();
         }
@@ -25,16 +27,16 @@ namespace MoviesApplication.Controllers
             return movies;
         }
 
-
         // To Add Movies 
+        
         public void AddMovie(string movieName, string genre, double rating, int year) 
         { 
             movies.Add(new Movie(movieName, genre, rating, year));
             Serializer.SaveMovies(movies);
         }
 
-
         // To Rate the Movie 
+        
         public double RateMovie(string movieId, double userRating)
         {
             Movie toRate = movies.Find(movie => movie.MovieId == movieId);
@@ -43,29 +45,32 @@ namespace MoviesApplication.Controllers
             return toRate.Rating.Average();
         }
 
-
         // Save Data 
+        
         public void SaveData()
         {
             Serializer.SaveMovies(movies);
         }
 
-
-        // Checking The Storage Capacity... For Now We Just Storing 5 Movies 
+        // Checking The Storage Capacity... For Now, We are Just Storing 5 Movies 
+        
         public bool IsFull()
         {
-            if(movies.Count >= CAPACITY) // Hanling the Logic of having 5 Movies in the Movie Hub
+            if(movies.Count >= CAPACITY) // Handling the Logic of having 5 Movies in the Movie Hub
                 return true;
                 return false;
         }
 
         // Delete Movies and One Movie Section
+        
         public void DeleteMovies()
         {
             movies.Clear();
             Serializer.SaveMovies(movies);
         }
-
+        
+        // To Delete All Movies
+        
         public void DeleteMovie(string movieId) 
         {
             Movie toRemove = movies.Find(movie => movie.MovieId == movieId);
