@@ -60,8 +60,8 @@ namespace MoviesApplication.Presentation
             }
         }
 
-
         // To add the Movie
+        
         public static string AddMovie()
         {
             if (movieManager.IsFull())
@@ -83,24 +83,24 @@ namespace MoviesApplication.Presentation
                return "\nMovie Added Successfully to MovieHub Store...!";
         }
 
-
         // Used For Saving the Data
+        
         public static void SaveMovies()
         {
             movieManager.SaveData();
             Console.WriteLine("All Data Saved Successfully...!");
         }
 
-
         // To Clear or delete All Movies 
+        
         public static void ClearAllMovies()
         {
             movieManager.DeleteMovies();
             Console.WriteLine("All Movies Deleted Successfully");
         }
 
-
         // To Display the Movies ...
+        
         public static void DisplayMovies()
         {
             List<Movie>movies = movieManager.GetMovies();
@@ -140,6 +140,7 @@ namespace MoviesApplication.Presentation
 
 
         // You Can Perform Edit, Read & Update Operations From this user-interface 
+        
         public static void ExecuteMovieOptions(Movie selectedMovie, int option, ref bool operate)
         {
             switch (option)
@@ -166,6 +167,7 @@ namespace MoviesApplication.Presentation
 
 
         // For Deletion of Movie
+        
         public static void DeleteTheMovie(string movieId)
         {
             movieManager.DeleteMovie(movieId);
@@ -181,6 +183,7 @@ namespace MoviesApplication.Presentation
 
 
         // to take valid rating from user ...
+        
         public static double GetValidRating()
         {
             Console.WriteLine("Enter Your Rating For this Movie (1 to 5) : ");
@@ -192,6 +195,7 @@ namespace MoviesApplication.Presentation
         }
 
         // To select the Movie
+        
         public static Movie SelectMovie(List<Movie> movies)
         {
             if (movies.Count == 0)
@@ -207,6 +211,7 @@ namespace MoviesApplication.Presentation
         
 
         // Method to get user selection
+        
         public  static int GetUserSelection(int max)
         { 
             Console.WriteLine("\nSelect The Movie From The Above List :");
@@ -218,7 +223,5 @@ namespace MoviesApplication.Presentation
                 Console.WriteLine($"Please Enter The Number Between 1 to {max}**");
             }
         }
-
-
     }
 }
