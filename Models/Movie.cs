@@ -9,6 +9,7 @@ namespace MoviesApplication.Models
     internal class Movie
     {
         // Propeties
+        
         public string MovieId { get; set; }
         public string MovieName { get; set; }
         public string Genre { get; set; }
@@ -28,6 +29,7 @@ namespace MoviesApplication.Models
         }
 
         // Automatically Generates Movie ID
+        
         public string GenerateMovieId()
         {
             string timeStamp = DateTime.Now.ToString("ssmmhh");
@@ -35,6 +37,7 @@ namespace MoviesApplication.Models
         }
 
         // Override the ToSting Method for Display Movies
+        
         public override string ToString()
         {
             return $"Movie ID : {MovieId}\n"
